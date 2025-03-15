@@ -10,4 +10,8 @@ public interface IHospitalService {
     Medecin saveMedecin (Medecin medecin);
     RendezVous saveRDV (RendezVous rendezVous);
     Consultation saveConsultation (Consultation consultation);
+    Patient findPtientById(Long id);
+    Patient findPtientByName(String  nom);
+    Medecin findMedByName(String  nom);
+    RendezVous findRDVById(Long id);
 }

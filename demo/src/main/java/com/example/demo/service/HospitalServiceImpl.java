@@ -11,6 +11,8 @@ import com.example.demo.repository.RendezVousRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @Transactional
 public class HospitalServiceImpl implements IHospitalService{
@@ -38,6 +40,7 @@ public class HospitalServiceImpl implements IHospitalService{
 
     @Override
     public RendezVous saveRDV(RendezVous rendezVous) {
+        //rendezVous.setId(UUID.randomUUID().toString());
         return rendezVousRepository.save(rendezVous);
     }
 
@@ -45,4 +48,26 @@ public class HospitalServiceImpl implements IHospitalService{
     public Consultation saveConsultation(Consultation consultation) {
         return consultationRepository.save(consultation);
     }
+
+    @Override
+    public Patient findPtientById(Long id) {
+        return patientRepository.findById(id).get();
+    }
+
+    @Override
+    public Patient findPtientByName(String nom) {
+        return patientRepository.findByNom(nom);
+    }
+
+    @Override
+    public Medecin findMedByName(String nom) {
+        return medecinRepository.findByNom(nom);
+    }
+
+    @Override
+    public RendezVous findRDVById(Long id) {
+        return rendezVousRepository.findById(id).get();
+    }
+
+
 }
